@@ -1,0 +1,41 @@
+body {
+  background: #000;
+  color: #ddd;
+  font-family: "Noto Sans", sans-serif;
+  padding: 100px 20px;
+}
+
+.conversation {
+  list-style: none;
+  margin: 0 auto;
+  max-width: 480px;
+  padding: 0;
+}
+
+.conversation li {
+  display: block;
+  background: #fff;
+  padding: 10px 15px;
+  line-height: 1.5;
+  margin-top: 12px;
+  border-radius: 5px;
+}
+
+.conversation li:first-child {
+  margin-top: 0;
+}
+
+.conversation .other {
+  margin-right: 40px;
+  background: #fefefe;
+  color: #333;
+}
+
+.conversation .me {
+  margin-left: 40px;
+  background: #09f;
+  color: #fefefe;
+}
+
+.conversation .other + .other { margin-top: 2px }
+.conversation .me + .me       { margin-top: 2px }

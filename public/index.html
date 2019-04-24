@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset='utf8'>
+    <meta name='viewport' content='width=device-width'>
+    <title>Twitter Archive Viewer</title>
+    <link rel='stylesheet' href='global.css'>
+    <link rel='stylesheet' href='bundle.css'>
+  </head>
+  <body>
+    <script>
+      window.YTD = {
+        account: {},
+        profile: {},
+        direct_message_headers: {},
+        direct_message: {},
+        follower: {}
+      }
+    </script>
+    <script src="archive/account.js"></script>
+    <script src="archive/profile.js"></script>
+    <script src="archive/follower.js"></script>
+    <script src="archive/direct-message-headers.js"></script>
+    <script src="archive/direct-message.js"></script>
+    <script src='bundle.js'></script>
+  </body>
+</html>
