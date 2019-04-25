@@ -2,31 +2,36 @@ import App from './App.svelte';
 
 let store = new Map()
 
-window.YTD.direct_message.part0.forEach(({ dmConversation }) => {
+let convIdMap = {}
+
+const conversations = []
+const self = window.YTD.account.part0[0].account
+
+window.YTD.direct_message.part0.forEach(({ dmConversation }, i) => {
   let { conversationId, messages } = dmConversation
 
-  if (store.has(conversationId)) {
-    let conversation = store.get(conversationId)
-    messages.forEach(msg => conversation.messages.push(msg.messageCreate))
+  if (convIdMap[conversationId]) {
+    let conversation = conversations[convIdMap[conversationId]]
+    messages.forEach(msg => conversation.messages.unshift(msg.messageCreate))
   }
 
   else {
-    store.set(conversationId, {
+    convIdMap[conversationId] = conversations.length
+    let { senderId, recipientId } = messages[0].messageCreate
+
+    conversations.push({
       id: conversationId,
-      messages: messages.map(msg => msg.messageCreate)
+      messages: messages.map(msg => msg.messageCreate).reverse(),
+      userId: senderId == self.accountId ? recipientId : senderId
     })
   }
 })
 
-const conversations = Array.from(store.values())
-const self = window.YTD.account.part0[0].account
+conversations.sort((a, b) => b.messages.length - a.messages.length)
 
 const app = new App({
   target: document.body,
-  props: {
-    conversation: conversations[4],
-    self
-  }
+  props: { conversations, self }
 });
 
 export default app;
