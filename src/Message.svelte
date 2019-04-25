@@ -5,14 +5,19 @@
   let isSticker = false
   let loaded = false
   let source
-  let images = []
+  let medias = []
 
   let stickerR = new RegExp("^\ https\:\/\/t\.co/(.*)$")
   let stickerURL = new RegExp("twitter\.com\/i\/stickers\/image\/(\\d+)")
 
   $: {
-    images = message.mediaUrls.map(url => {
-      return message.id + '-' + url.split('/').pop()
+    medias = message.mediaUrls.map(url => {
+      let ret = {
+        type: url.split('.').pop(),
+        url: message.id + '-' + url.split('/').pop()
+      }
+      console.log(ret)
+      return ret
     })
 
     isSticker = stickerR.test(message.text)
@@ -42,9 +47,15 @@
   </li>
 {:else}
   <li class="{ type } plain">
-    { message.text }
-    {#each images as url }
-      <img src="archive/direct_message_media/{ url }">
+    <p>{ message.text }</p>
+    {#each medias as media }
+      {#if media.type == 'jpg' }
+        <img src="archive/direct_message_media/{ media.url }">
+      {:else if media.type == 'mp4'}
+        <video controls loop>
+          <source src="archive/direct_message_media/{ media.url }" type="video/mp4">
+        </video>
+      {/if}
     {/each}
   </li>
 {/if}

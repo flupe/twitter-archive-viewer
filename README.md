@@ -1,5 +1,18 @@
 A web app to view your own twitter archive in the browser. Still WIP.
 
+## Features
+
+Currently, this web app allows you to read all your past conversations in full, starting from the very beginning.
+
+Supported content:
+- Images
+- Stickers
+- Videos
+
+Unsupported:
+- Gif reactions
+- Linked tweets
+
 ## Instructions
 
 The first step is to clone this repository on your computer.

@@ -15,31 +15,46 @@ body {
 .conversation li { margin-top: 12px }
 .conversation li:first-child { margin-top: 0 }
 
-.conversation li.plain {
+.conversation li.plain.other { margin-right: 40px }
+
+.conversation li.plain.me {
+  text-align: right;
+  margin-left: 40px;
+}
+
+.conversation li.plain p {
   background: #fff;
   padding: 10px 15px;
   line-height: 1.5;
   border-radius: 5px;
+  display: inline-block;
+  margin: 0;
+  text-align: left;
 }
 
-.conversation .plain.other {
-  margin-right: 40px;
+.conversation li.plain p:not(:last-child) { margin-bottom: 1px }
+
+.conversation .plain.other p {
   background: #fefefe;
   color: #333;
 }
 
-.conversation .plain.me {
-  margin-left: 40px;
+.conversation .plain.me p {
   background: #09f;
   color: #fefefe;
 }
 
-.conversation .other + .other { margin-top: 2px }
-.conversation .me + .me       { margin-top: 2px }
 
-.conversation li img {
-  max-width: 100%;
+.conversation .other + .other { margin-top: 1px }
+.conversation .me + .me       { margin-top: 1px }
+
+.conversation .plain img,
+.conversation .plain video {
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
 }
 
 .conversation .sticker.me { text-align: right }
 .conversation .sticker img { width: 64px }
+
