@@ -12,26 +12,23 @@ body {
   padding: 0;
 }
 
-.conversation li {
-  display: block;
+.conversation li { margin-top: 12px }
+.conversation li:first-child { margin-top: 0 }
+
+.conversation li.plain {
   background: #fff;
   padding: 10px 15px;
   line-height: 1.5;
-  margin-top: 12px;
   border-radius: 5px;
 }
 
-.conversation li:first-child {
-  margin-top: 0;
-}
-
-.conversation .other {
+.conversation .plain.other {
   margin-right: 40px;
   background: #fefefe;
   color: #333;
 }
 
-.conversation .me {
+.conversation .plain.me {
   margin-left: 40px;
   background: #09f;
   color: #fefefe;
@@ -39,3 +36,10 @@ body {
 
 .conversation .other + .other { margin-top: 2px }
 .conversation .me + .me       { margin-top: 2px }
+
+.conversation li img {
+  max-width: 100%;
+}
+
+.conversation .sticker.me { text-align: right }
+.conversation .sticker img { width: 64px }
